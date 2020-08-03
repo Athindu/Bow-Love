@@ -26,6 +26,8 @@ public class IdentifyDogActivity extends AppCompatActivity {
     int check;
     int breedNum;
     String timeB;
+    boolean flag;
+    boolean clicked;
 
     private String breedArray[] = {"Rottweiler", "Bullmastiff", "Airedale", "Basset", "Beagle", "Boxer",
             "Collie", "Dhole", "Doberman", "Keeshond", "Blenheim Spaniel", "Golden retriever",
@@ -44,6 +46,7 @@ public class IdentifyDogActivity extends AppCompatActivity {
         }
         if(timeB.equals("true")){
             timeCal(10,time);                   ////calling the method to create the countdown
+            flag = true;
         }
 
 
@@ -161,16 +164,21 @@ public class IdentifyDogActivity extends AppCompatActivity {
             public void onFinish() {
                 nextDog();
             }
+
+
         }.start();
     }
 
     //next images after button click
     public void nextImg(View view) {
-
+        clicked=true;
         nextDog();
     }
 
     public void nextDog(){              //creating another method so it can be accessed in timer so can act as a next button
+        if (flag) {
+            timeCal(10, time);
+        }
         answer.setText("");
         getRandomNumberInRange(0,14);
         dogImg1.setClickable(true);

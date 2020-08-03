@@ -26,6 +26,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     TextView correctBreed;
     String timeB;
     TextView time;
+    boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
         }
         if(timeB.equals("true")){
             timeCal(10,time);               //calling the method to create the countdown
+            flag = true;
         }
 
         setImageView();
@@ -137,6 +139,9 @@ public class IdentifyBreedActivity extends AppCompatActivity {
             correctBreed.setText("");
             quizStatus.setText("");
             buttonSubmit.setText("Submit");             //change the button text again to submit as new image should be set on the image view and hence called the setImageView method
+            if (flag){
+                timeCal(10,time);
+            }
             setImageView();
 
         }
